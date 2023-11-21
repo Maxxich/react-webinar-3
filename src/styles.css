@@ -30,6 +30,11 @@ body {
   padding: 20px;
 }
 
+.List {
+  list-style-type: none;
+  padding: 0;
+}
+
 .List-item {
   border-bottom: 1px dashed #ccc;
 }
@@ -50,7 +55,7 @@ body {
 }
 
 .Item-title {
-  width: 100%;
+  width: fit-content;
   padding: 20px 10px;
 }
 
@@ -58,4 +63,5 @@ body {
   display: flex;
   justify-content: flex-end;
   padding: 20px 20px 20px 10px;
+  margin-left: auto;
 }
