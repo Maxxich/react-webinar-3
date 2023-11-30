@@ -17,6 +17,22 @@ export function plural(value, variants = {}, locale = 'ru-RU') {
 }
 
 /**
+ * Форматирует число
+ * Возвращает строку с пробелами между 1000 разрядами в числе
+ * @param value {Number} Число.
+ * @returns {*|string}
+ */
+export function getNumberForm(value) {
+  const arrayValue = String(value).split('')
+  const targetValue = arrayValue.map(
+    (number, i) => ((arrayValue.length - (i)) % 3 === 0) 
+      ? ' ' + number
+      : number
+  )
+  return targetValue.join('')
+}
+
+/**
  * Генератор чисел с шагом 1
  * Вариант с замыканием на начальное значение в самовызываемой функции.
  * @returns {Number}

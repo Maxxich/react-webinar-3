@@ -1,0 +1,17 @@
+.CartModal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0,0,0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.CartModal-center {
+  width: 100%;
+  max-width: 960px;
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 10px;
+  padding-bottom: 69px;
+}

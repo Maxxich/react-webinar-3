@@ -1,0 +1,22 @@
+.CartControls {
+  display: flex;
+  justify-content: flex-end;
+  border-bottom: 1px dashed #ccc;
+}
+
+.CartControls-info {
+  display: flex;
+  justify-content: flex-end;
+  padding: 18px 0px 24px 20px;
+  text-wrap: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+.CartControls-info > strong {
+  margin-left: 12px;
+}
+
+.CartControls-button {
+  padding: 20px 21px 22px;
+}

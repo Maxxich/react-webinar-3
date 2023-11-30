@@ -1,24 +1,27 @@
-.Item {
+.Good {
   display: flex;
   justify-content: flex-start;
   transition: background-color 1s;
+  box-sizing: border-box;
 }
 
-.Item_selected {
-  background: #75aaf1;
-  color: #fff;
-}
-
-.Item-code {
+.Good-code {
   padding: 20px 10px 20px 20px;
 }
 
-.Item-title {
+.Good-title {
   width: 100%;
   padding: 20px 10px;
 }
 
-.Item-actions {
+.Good-price {
+  display: flex;
+  justify-content: flex-end;
+  padding: 19px 4px 21px 10px;
+  text-wrap: nowrap;
+}
+
+.Good-actions {
   display: flex;
   justify-content: flex-end;
   padding: 20px 20px 20px 10px;

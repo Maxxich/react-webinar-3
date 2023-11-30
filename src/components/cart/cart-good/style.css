@@ -1,0 +1,36 @@
+.CartGood {
+  display: flex;
+  justify-content: flex-start;
+  transition: background-color 1s;
+  box-sizing: border-box;
+}
+
+.CartGood-code {
+  padding: 20px 10px 20px 20px;
+}
+
+.CartGood-title {
+  width: 100%;
+  padding: 20px 10px;
+}
+
+.CartGood-price {
+  display: flex;
+  justify-content: flex-end;
+  padding: 19px 10px 21px 10px;
+  text-wrap: nowrap;
+  margin-right: 42px;
+}
+
+.CartGood-quantity {
+  display: flex;
+  justify-content: flex-end;
+  padding: 19px 10px 21px 10px;
+  text-wrap: nowrap;
+}
+
+.CartGood-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 20px 20px 10px;
+}
