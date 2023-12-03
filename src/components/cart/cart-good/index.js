@@ -26,7 +26,7 @@ function CartGood(props) {
         {getNumberForm(props.good.price) + ' ₽'}
       </div>
       <div className={cn('quantity')}>
-        {getNumberForm(props.good.quantityInCart) + ' шт'}
+        {getNumberForm(props.good.quantity) + ' шт'}
       </div>
       <div className={cn('actions')}>
         <button onClick={callbacks.onDeleteFromCart}>
@@ -42,7 +42,7 @@ CartGood.propTypes = {
     code: PropTypes.number,
     title: PropTypes.string,
     price: PropTypes.number,
-    quantityInCart: PropTypes.number
+    quantity: PropTypes.number
   }).isRequired,
   onDeleteFromCart: PropTypes.func
 };

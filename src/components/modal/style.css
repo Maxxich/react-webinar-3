@@ -1,4 +1,4 @@
-.CartModal {
+.Modal {
   position: fixed;
   inset: 0;
   background-color: rgba(0,0,0, 0.7);
@@ -7,7 +7,7 @@
   justify-content: center;
 }
 
-.CartModal-center {
+.Modal-center {
   width: 100%;
   max-width: 960px;
   overflow: hidden;

@@ -1,8 +1,9 @@
 import React, { useCallback } from 'react';
 import List from "./components/list";
-import CartControls from "./components/cart/cart-controls";
+import Cart from "./components/cart/cart";
 import Head from './components/Head';
 import PageLayout from "./components/page-layout";
+import Good from './components/good';
 
 /**
  * Приложение
@@ -11,7 +12,9 @@ import PageLayout from "./components/page-layout";
  */
 function App({store}) {
 
-  const list = store.getState().list;
+  const {
+    list, cartList, cartTotalCost
+  } = store.getState()
 
   const callbacks = {
     onAddGoodToCart: useCallback((goodCode) => {
@@ -23,15 +26,17 @@ function App({store}) {
     }, [store])
   }
 
-  const goodsInCart = list.filter((good) => good.quantityInCart)
-
   return (
     <PageLayout>
       <Head title='Магазин'/>
-      <CartControls goodsInCart={goodsInCart} 
-                    onDeleteFromCart={callbacks.onDeleteGoodFromCart}/>
+      <Cart list={cartList} 
+            onDelete={callbacks.onDeleteGoodFromCart}
+            totalCost={cartTotalCost}/>
       <List list={list}
-            onAddGoodToCart={callbacks.onAddGoodToCart}/>
+            renderItem={(good) => (
+              <Good good={good} 
+                    onAddToCart={callbacks.onAddGoodToCart}/>
+            )}/>
     </PageLayout>
   );
 }

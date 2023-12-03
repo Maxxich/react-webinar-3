@@ -43,15 +43,28 @@ class Store {
    * @param goodCode
    */
   addGoodToCart(goodCode) {
-    const updatedList = this.state.list.map(good => {
-      if (good.code === goodCode) {
-        good.quantityInCart = (good.quantityInCart || 0) + 1
-      }
-      return good
-    })
+    // Копия во избежание мутирования state
+    const cartList = [...this.state.cartList]
+    let cartTotalCost = this.state.cartTotalCost
+    // Поиск товара в корзине
+    const goodInCartList = cartList.find(good => good.code === goodCode)
+
+    if (goodInCartList) {
+      // Увеличение количества в корзине
+      goodInCartList.quantity++
+      cartTotalCost += goodInCartList.price
+    } else {
+      // Добавление в корзину
+      const good = this.state.list.find(good => good.code === goodCode)
+      cartList.push({ ...good, quantity: 1})
+      cartTotalCost += good.price
+    }
+
     this.setState({
       ...this.state,
-      list: updatedList
+      // Мутированная копия массива из state
+      cartList,
+      cartTotalCost
     })
   };
 
@@ -60,15 +73,19 @@ class Store {
    * @param goodCode
    */
   deleteGoodFromCart(goodCode) {
-    const updatedList = this.state.list.map(good => {
-      if (good.code === goodCode) {
-        delete good.quantityInCart
-      }
-      return good
-    })
+    const goodToRemove = this.state.cartList
+      .find(good => good.code === goodCode)
+
+    const cartTotalCost = this.state.cartTotalCost - (
+      goodToRemove.price * goodToRemove.quantity
+    )
+
     this.setState({
       ...this.state,
-      list: updatedList
+      cartList: [
+        ...this.state.cartList.filter(good => good.code !== goodCode)
+      ],
+      cartTotalCost
     })
   };
 }

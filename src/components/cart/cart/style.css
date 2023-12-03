@@ -1,10 +1,9 @@
-.CartControls {
+.Cart {
   display: flex;
   justify-content: flex-end;
-  border-bottom: 1px dashed #ccc;
 }
 
-.CartControls-info {
+.Cart-info {
   display: flex;
   justify-content: flex-end;
   padding: 18px 0px 24px 20px;
@@ -13,10 +12,19 @@
   align-items: center;
 }
 
-.CartControls-info > strong {
+.Cart-info > strong {
   margin-left: 12px;
 }
 
-.CartControls-button {
+.Cart-button {
   padding: 20px 21px 22px;
+}
+
+.Cart-emptyMessage {
+  color: #808080;
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 0 20px;
+  text-wrap: nowrap;
 }
