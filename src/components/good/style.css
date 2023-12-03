@@ -6,23 +6,27 @@
 }
 
 .Good-code {
-  padding: 20px 10px 20px 20px;
+  padding: 22px 10px 17px 19px;
+  line-height: 18px;
 }
 
 .Good-title {
   width: 100%;
-  padding: 20px 10px;
+  padding: 22px 10px 17px;
+  line-height: 18px;
 }
 
 .Good-price {
   display: flex;
   justify-content: flex-end;
-  padding: 19px 4px 21px 10px;
+  padding: 21px 4px 18px 10px;
   text-wrap: nowrap;
+  line-height: 18px;
+  font-size: 18px;
 }
 
 .Good-actions {
   display: flex;
   justify-content: flex-end;
-  padding: 20px 20px 20px 10px;
+  padding: 21px 21px 18px 21px;
 }

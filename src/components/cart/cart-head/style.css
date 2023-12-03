@@ -1,11 +1,11 @@
 .CartHead {
   display: flex;
   background-color: #F5F5F5;
-  margin-bottom: 71px;
+  margin-bottom: 70px;
 }
 
 .CartHead > h2 {
-  padding: 20px 20px 23px;
+  padding: 21px 20px 22px;
   font-weight: 700;
   font-size: 32px;
   line-height: 36.8px;
@@ -15,4 +15,8 @@
 .CartHead-button {
   padding: 32px 32px 27px;
   margin-left: auto;
+}
+
+.CartHead-button > button {
+  padding: 1px 10px 1px 11px;
 }

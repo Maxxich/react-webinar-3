@@ -2,9 +2,11 @@
   display: flex;
   justify-content: flex-end;
   padding: 0 120px 0 20px;
-  gap: 53px;
+  gap: 54px;
+  font-size: 18px;
+  line-height: 21px;
 }
 
 .CartTotal > strong {
-  padding: 20px 0;
+  padding: 21px 0px 20px 0px;
 }
