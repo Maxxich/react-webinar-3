@@ -2,7 +2,7 @@
   display: flex;
   justify-content: flex-start;
   transition: background-color 1s;
-  padding-left: 10px
+  padding-left: 10px;
 }
 
 .Item_selected {
@@ -17,6 +17,14 @@
 .Item-title {
   width: 100%;
   padding: 20px 10px;
+  color: #000;
+  text-decoration: none;
+  width: fit-content;
+  margin-right: auto;
+}
+
+.Item-title:hover {
+  text-decoration: underline;
 }
 
 .Item-actions {

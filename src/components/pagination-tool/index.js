@@ -20,7 +20,8 @@ function PagintaionTool({
           Array(lastPage).fill(1).map((e, i) => (
             <PaginationButton page={i + 1}
                               changePage={changePage}
-                              active={(i + 1) === page}/>
+                              active={(i + 1) === page}
+                              key={i}/>
           ))
         }
       </div>
@@ -42,7 +43,7 @@ function PagintaionTool({
     <div className={'PaginationTool'}>
       { flags.start && <PaginationButton page={1}
                                          changePage={changePage}/> }
-      { flags.leftDots && '...' }
+      { flags.leftDots && <span>...</span> }
       { flags.secondLeft && <PaginationButton page={page - 2}
                                               changePage={changePage}/> }
       { flags.firstLeft && <PaginationButton page={page - 1}
@@ -54,7 +55,7 @@ function PagintaionTool({
                                               changePage={changePage}/> }
       { flags.secondRight && <PaginationButton page={page + 2}
                                                changePage={changePage}/>}
-      { flags.rightDots && '...' }
+      { flags.rightDots && <span>...</span> }
       { flags.finish && <PaginationButton page={lastPage}
                                           changePage={changePage}/> }
     </div>

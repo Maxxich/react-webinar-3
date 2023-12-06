@@ -1,0 +1,11 @@
+.Navigation {
+  padding: 18px 20px 24px;
+  width: fit-content; 
+}
+
+.Navigation-link {
+  font-size: 18px;
+  line-height: 21px;
+  color: #0087E9;
+
+}

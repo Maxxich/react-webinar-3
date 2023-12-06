@@ -1,0 +1,15 @@
+.ArticleInfo {
+  font-size: 18px;
+  line-height: 21px;
+  padding: 20px 40px 0;
+}
+
+.ArticleInfo > div {
+  margin-bottom: 20px;
+}
+
+.ArticleInfo-price {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+}

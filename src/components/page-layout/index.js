@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {cn as bem} from '@bem-react/classname';
 import './style.css';
 
-function PageLayout({head, footer, children}) {
+function PageLayout({head, navigation, footer, children}) {
 
   const cn = bem('PageLayout');
 
@@ -11,6 +11,9 @@ function PageLayout({head, footer, children}) {
     <div className={cn()}>
       <div className={cn('head')}>
         {head}
+      </div>
+      <div className={cn('navigation')}>
+        {navigation}
       </div>
       <div className={cn('center')}>
         {children}

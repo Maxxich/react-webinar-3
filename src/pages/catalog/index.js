@@ -1,6 +1,5 @@
 import {memo, useCallback, useEffect, useState} from 'react';
 import Item from "../../components/item";
-import PageLayout from "../../components/page-layout";
 import Head from "../../components/head";
 import BasketTool from "../../components/basket-tool";
 import List from "../../components/list";
@@ -8,8 +7,13 @@ import useStore from "../../store/use-store";
 import useSelector from "../../store/use-selector";
 import PaginationTool from '../../components/pagination-tool';
 import { getValidPageFromUrlSearchParams, setPageToUrlSearchParams } from '../../utils';
+import Navigation from '../../components/navigation';
+import { navigationLinks } from '../navigation-links';
+import PageLayout from '../../components/page-layout';
+import { i } from '../../internationalization/i';
+import LanguageSelect from '../../components/language-select';
 
-function Main() {
+function CatalogPage() {
 
   const store = useStore();
   const lastPage = useSelector(state => state.catalog.lastPage)
@@ -51,10 +55,20 @@ function Main() {
   };
 
   return (
-    <PageLayout>
-      <Head title='Магазин'/>
-      <BasketTool onOpen={callbacks.openModalBasket} amount={select.amount}
-                  sum={select.sum}/>
+    <PageLayout
+      head={
+        <Head title={i('Магазин')}
+          addon={<LanguageSelect/>}
+        />
+      }
+      navigation={
+        <>
+          <Navigation links={navigationLinks}/>
+          <BasketTool onOpen={callbacks.openModalBasket} amount={select.amount}
+                      sum={select.sum}/>
+        </>
+      }
+    >
       <List list={select.list} renderItem={renders.item}/>
       <PaginationTool page={page}
                       lastPage={lastPage || 1}
@@ -64,4 +78,4 @@ function Main() {
   );
 }
 
-export default memo(Main);
+export default memo(CatalogPage);

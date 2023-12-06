@@ -1,14 +1,17 @@
 .PaginationButton {
-  height: 18px;
+  height: 20px;
   display: flex;
   width: fit-content;
-  min-width: 18px;
+  min-width: 20px;
   align-items: center;
   justify-content: center;
   border: none;
   background-color: transparent;
   padding: 0 5px;
   cursor: pointer;
+  font-size: 16px;
+  line-height: 18px;
+  padding: 2px 5px 0px
 }
 
 .PaginationButton:hover {
