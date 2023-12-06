@@ -33,3 +33,34 @@ export function codeGenerator(start = 0) {
 export function numberFormat(value, locale = 'ru-RU', options = {}) {
   return new Intl.NumberFormat(locale, options).format(value);
 }
+
+
+/**
+ * Получение валидного номера страницы из URLSearchParams
+ * @param lastPage {Number | undefined} Номер последней страницы
+ */
+export function getValidPageFromUrlSearchParams(lastPage) {
+  const params = new URL(window.location).searchParams;
+  let page = parseInt(params.get("_page"));
+  if (Number.isInteger(page)) {
+    if (page < 1) {
+      page = 1;
+    } else if (lastPage && (page > lastPage)) {
+      page = lastPage;
+    };
+  } else {
+    page = 1;
+  };
+  return page
+}
+
+/**
+ * Изменение номера страницы в URLSearchParams
+ * @param page {Number} Номер страницы
+ */
+export function setPageToUrlSearchParams(page) {
+  const url = new URL(location);
+  url.searchParams.set("_page", page);
+  window.history.pushState(null, null, url)
+}
+
