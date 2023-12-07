@@ -16,7 +16,7 @@ function LanguageSelect () {
     <select onChange={callbacks.onChange} value={localeCode}>
       {
         locales.map(l => (
-          <option value={l.code}>{l.name}</option>
+          <option value={l.code} key={l.code}>{l.name}</option>
         ))
       }
     </select>

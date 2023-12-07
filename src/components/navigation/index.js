@@ -20,10 +20,10 @@ function Navigation({links}) {
 } 
 
 Navigation.propTypes = {
-  links: PropTypes.arrayOf({
+  links: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string,
     to: PropTypes.string
-  })
+  }))
 }
 
 export default memo(Navigation)

@@ -9,6 +9,7 @@ import Navigation from '../../components/navigation';
 import { navigationLinks } from '../navigation-links';
 import PageLayout from '../../components/page-layout';
 import { i } from '../../internationalization/i';
+import CenterMessage from '../../components/center-message';
 
 function ArticlePage() {
 
@@ -49,9 +50,9 @@ function ArticlePage() {
 
     info: useCallback(() => {
       switch (status) {
-        case 'idle': return i('Загрузка...')
-        case 'rejected': return i('Ошибка. Товар не найден')
-        case 'pending': return i('Загрузка...')
+        case 'idle': return <CenterMessage>{i('Загрузка...')}</CenterMessage>
+        case 'rejected': return <CenterMessage>{i('Ошибка. Товар не найден')}</CenterMessage>
+        case 'pending': return <CenterMessage>{i('Загрузка...')}</CenterMessage>
         case 'fulfilled': return <ArticleInfo article={data}
                                               onAdd={callbacks.addToBasket}/>
         default: return null
