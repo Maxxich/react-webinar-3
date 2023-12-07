@@ -1,81 +1,79 @@
-export const locales = ['RU', 'EN', 'FR']
-
 export const dictionary = {
   'Магазин': {
-    'EN': 'Shop',
-    'FR': 'Boutique'
+    'en-US': 'Shop',
+    'fr-FR': 'Boutique'
   },
   'Главная': {
-    'EN': 'Home',
-    'FR': "D'accueil"
+    'en-US': 'Home',
+    'fr-FR': "D'accueil"
   },
   'В корзине': {
-    'EN': 'Cart',
-    'FR': 'Panier'
+    'en-US': 'Cart',
+    'fr-FR': 'Panier'
   },
   'пусто': {
-    'EN': 'empty',
-    'FR': 'vide'
+    'en-US': 'empty',
+    'fr-FR': 'vide'
   },
   'Перейти': {
-    'EN': 'Open',
-    'FR': 'Aller'
+    'en-US': 'Open',
+    'fr-FR': 'Aller'
   },
   'Добавить': {
-    'EN': 'Add',
-    'FR': 'Ajouter'
+    'en-US': 'Add',
+    'fr-FR': 'Ajouter'
   },
   'Закрыть': {
-    'EN': 'Close',
-    'FR': 'Fermer'
+    'en-US': 'Close',
+    'fr-FR': 'Fermer'
   },
   'Корзина': {
-    'EN': 'Cart',
-    'FR': 'Panier'
+    'en-US': 'Cart',
+    'fr-FR': 'Panier'
   },
   'Итого': {
-    'EN': 'Total',
-    'FR': 'Total'
+    'en-US': 'Total',
+    'fr-FR': 'Total'
   },
   'Удалить': {
-    'EN': 'Delete',
-    'FR': 'Supprimer'
+    'en-US': 'Delete',
+    'fr-FR': 'Supprimer'
   },
   'шт': {
-    'EN': 'pcs',
-    'FR': 'morceaux'
+    'en-US': 'pcs',
+    'fr-FR': 'pcs'
   },
   'Страница не найдена': {
-    'EN': 'Page not found',
-    'FR': 'Page non trouvée'
+    'en-US': 'Page not found',
+    'fr-FR': 'Page non trouvée'
   },
   'Загрузка...': {
-    'EN': 'Loading...',
-    'FR': 'Chargement...'
+    'en-US': 'Loading...',
+    'fr-FR': 'Chargement...'
   },
   'Страна производитель': {
-    'EN': 'Manufacturer country',
-    'FR': 'Pays du fabricant'
+    'en-US': 'Manufacturer country',
+    'fr-FR': 'Pays du fabricant'
   },
   'Категория': {
-    'EN': 'Category',
-    'FR': 'Catégorie'
+    'en-US': 'Category',
+    'fr-FR': 'Catégorie'
   },
   'Год выпуска': {
-    'EN': 'Year of issue',
-    'FR': "Année d'émission"
+    'en-US': 'Year of issue',
+    'fr-FR': "Année d'émission"
   },
   'Цена': {
-    'EN': 'Price',
-    'FR': 'Prix'
+    'en-US': 'Price',
+    'fr-FR': 'Prix'
   },
   'Ошибка': {
-    'EN': 'Error',
-    'FR': 'Erreur'
+    'en-US': 'Error',
+    'fr-FR': 'Erreur'
   },
   'Ошибка. Товар не найден': {
-    'EN': 'Error. Product not found',
-    'FR': 'Erreur. Produit non trouvé'
+    'en-US': 'Error. Product not found',
+    'fr-FR': 'Erreur. Produit non trouvé'
   },
 
 }

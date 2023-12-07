@@ -1,22 +1,22 @@
 import { memo } from "react"
-import { locales } from "../../internationalization/dictinary"
+import { locales } from "../../internationalization/locales"
 
 function LanguageSelect () {
 
-  const locale = localStorage.getItem('locale') || 'RU'
+  const localeCode = localStorage.getItem('localeCode') || 'ru-RU'
 
   const callbacks = {
     onChange: (e) => {
-      localStorage.setItem('locale', e.target.value)
+      localStorage.setItem('localeCode', e.target.value)
       location.reload()
     }
   }
 
   return (
-    <select onChange={callbacks.onChange} value={locale}>
+    <select onChange={callbacks.onChange} value={localeCode}>
       {
         locales.map(l => (
-          <option value={l}>{l}</option>
+          <option value={l.code}>{l.name}</option>
         ))
       }
     </select>
