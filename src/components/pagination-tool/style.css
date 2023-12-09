@@ -2,9 +2,13 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding: 22px 19px;
+  padding: 22px 21px;
 }
 
 .PaginationTool > span {
   width: 20px;
+  padding-top: 1px;
+  font-weight: 400;
+  text-align: center;
+  color: #CCCCCC;
 }
