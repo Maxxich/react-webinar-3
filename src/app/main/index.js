@@ -71,7 +71,7 @@ function MainPage() {
     >
       <List list={select.list} renderItem={renders.item}/>
       <PaginationTool page={page}
-                      lastPage={25 || lastPage || 1}
+                      lastPage={lastPage || 1}
                       changePage={callbacks.changePage}/>
     </PageLayout>
 
