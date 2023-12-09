@@ -1,8 +1,9 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Layout from './layout';
-import CatalogPage from '../pages/catalog';
-import ArticlePage from '../pages/article';
-import NotFoundPage from '../pages/not-found-page';
+import MainPage from './main';
+import ArticlePage from './article';
+import NotFoundPage from './not-found';
+import useSelector from '../store/use-selector';
+import Basket from './basket';
 
 /**
  * Приложение
@@ -10,29 +11,35 @@ import NotFoundPage from '../pages/not-found-page';
  */
 function App() {
 
-
+  const activeModal = useSelector(state => state.modals.name);
 
   const router = createBrowserRouter([
     {
-      element: <Layout/>,
-      children: [
-        {
-          path: '/',
-          element: <CatalogPage/>
-        },
-        {
-          path: '/articles/:id',
-          element: <ArticlePage/>
-        },
-        {
-          path: '*',
-          element: <NotFoundPage/>
-        }
-      ]
+      path: '/',
+      element: <>
+        <MainPage/>
+        {activeModal === 'basket' && <Basket/>}
+      </>
     },
+    {
+      path: '/articles/:id',
+      element: <> 
+        <ArticlePage/>
+        {activeModal === 'basket' && <Basket/>}
+      </>
+    },
+    {
+      path: '*',
+      element: <> 
+        <NotFoundPage/>
+        {activeModal === 'basket' && <Basket/>}
+      </>
+    }
   ]);
 
-  return <RouterProvider router={router} />
+  return (
+    <RouterProvider router={router} />
+  )
 }
 
 export default App;

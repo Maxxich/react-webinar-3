@@ -13,7 +13,7 @@ import PageLayout from '../../components/page-layout';
 import { i } from '../../internationalization/i';
 import LanguageSelect from '../../components/language-select';
 
-function CatalogPage() {
+function MainPage() {
 
   const store = useStore();
   const lastPage = useSelector(state => state.catalog.lastPage)
@@ -78,4 +78,4 @@ function CatalogPage() {
   );
 }
 
-export default memo(CatalogPage);
+export default memo(MainPage);
