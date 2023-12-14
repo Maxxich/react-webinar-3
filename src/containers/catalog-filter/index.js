@@ -14,6 +14,7 @@ function CatalogFilter() {
   const store = useStore();
 
   const select = useSelector(state => ({
+    page: state.catalog.params.page,
     sort: state.catalog.params.sort,
     query: state.catalog.params.query,
     category: state.catalog.params.category,
@@ -31,6 +32,7 @@ function CatalogFilter() {
     onReset: useCallback(() => store.actions.catalog.resetParams(), [store]),
   };
 
+
   const options = {
     sort: useMemo(() => ([
       {value: 'order', title: 'По порядку'},
@@ -38,6 +40,7 @@ function CatalogFilter() {
       {value: '-price', title: 'Сначала дорогие'},
       {value: 'edition', title: 'Древние'},
     ]), []),
+
     categories: useMemo(() => ([
       ...(select.categoryOptions || [{title: 'Загрзука...', value: ''}
     ])]), [select.categoryOptions])

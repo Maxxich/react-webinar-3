@@ -16,5 +16,15 @@
     "few": "товара",
     "many": "товаров",
     "other": "товара"
-  }
+  },
+  "authTool.login": "Вход",
+  "authTool.logout": "Выход",
+  "loginForm.login": "Логин",
+  "loginForm.loginPlaceholder": "Логин...",
+  "loginForm.password": "Пароль",
+  "loginForm.passwordPlaceholder": "Пароль...",
+  "loginForm.signIn": "Войти",
+  "profileCard.profile": "Профиль",
+  "profileCard.name": "Имя",
+  "profileCard.phone": "Телефон"
 }

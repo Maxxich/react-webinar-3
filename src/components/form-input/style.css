@@ -1,0 +1,20 @@
+.FormInput{
+  margin-bottom: 20px;
+}
+
+.FormInput-label {
+  display: block;
+  font-size: 16px;
+  line-height: 18px;
+  margin-bottom: 1px;
+}
+
+.FormInput-input {
+  display: block;
+  width: 197px;
+  height: 21px;
+  border-radius: 0px;
+  border: 1px solid #767676;
+  font-size: 16px;
+  line-height: 18px;
+}

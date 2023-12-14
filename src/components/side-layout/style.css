@@ -31,3 +31,14 @@
 .SideLayout-item {
   margin: 0 5px;
 }
+
+.SideLayout_border_bottom {
+  border-bottom: 1px solid #CCCCCC;
+}
+
+
+.SideLayout_sideMargin_none {
+  margin-left: 0;
+  margin-right: 0;
+}
+

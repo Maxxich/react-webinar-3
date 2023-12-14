@@ -1,0 +1,14 @@
+.AuthTool{
+  height: 40px;
+  align-items: center;
+  display: flex;
+}
+
+.AuthTool-logout {
+  margin-right: 16px;
+}
+
+.AuthTool-login {
+  margin-right: 16px;
+  display: block;
+}
