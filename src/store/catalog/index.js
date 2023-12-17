@@ -31,67 +31,13 @@ class CatalogState extends StoreModule {
    * @return {Promise<void>}
    */
   async initParams(newParams = {}) {
-    await this.initCategoryOptions()
     const urlParams = new URLSearchParams(window.location.search);
     let validParams = {};
     if (urlParams.has('page')) validParams.page = Number(urlParams.get('page')) || 1;
     if (urlParams.has('limit')) validParams.limit = Math.min(Number(urlParams.get('limit')) || 10, 50);
     if (urlParams.has('sort')) validParams.sort = urlParams.get('sort');
     if (urlParams.has('query')) validParams.query = urlParams.get('query');
-    if (urlParams.has('category')) {
-      const category = urlParams.get('category');
-      if (this.getState().categoryOptions.find(c => c.value === category)) {
-        validParams.category = category
-      }
-    }
     await this.setParams({...this.initState().params, ...validParams, ...newParams}, true);
-  }
-
-  /**
-   * Инициализация категорий (получение с сервера).
-   * @return {Promise<void>}
-   */
-  async initCategoryOptions() {
-    const response = await fetch(`/api/v1/categories?fields=_id,title,parent(_id)&limit=*`);
-    const json = await response.json();
-
-    // Возвращает дерево с children из полученных категории
-    function createTree(array) {
-      return array.filter(item => {
-        item.children = array.filter(i => ((i.parent) && (i.parent._id === item._id)))
-        return item.parent == null;
-      })
-    };
-
-    // Возвращает массив для опций категорий
-    function formatTree(array, depth = 0) {
-      if (!array.length) return;
-      let parentList = [];
-      for (let category of array) {
-        let childList = [];
-        childList.push({
-          value: category._id,
-          title: depth 
-            ? '-'.repeat(depth) + ' ' + category.title 
-            : category.title
-        });
-
-        let childrenList = formatTree(category.children, depth + 1);
-        if (childrenList) {
-          childList = childList.concat(childrenList);
-        }
-        parentList = parentList.concat(childList);
-      }
-      return parentList;
-    }
-    
-    this.setState({
-      ...this.getState(),
-      categoryOptions: [
-        {value: '', title: 'Все'},
-        ...formatTree(createTree(json.result.items))
-      ]
-    }, 'Загружен список категорий из АПИ');
   }
 
   /**

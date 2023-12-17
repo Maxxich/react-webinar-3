@@ -18,7 +18,8 @@ function CatalogFilter() {
     sort: state.catalog.params.sort,
     query: state.catalog.params.query,
     category: state.catalog.params.category,
-    categoryOptions: state.catalog.categoryOptions
+    categoriesList: state.category.list,
+    categoriesLoading: state.category.waiting,
   }));
 
   const callbacks = {
@@ -42,12 +43,15 @@ function CatalogFilter() {
     ]), []),
 
     categories: useMemo(() => ([
-      ...(select.categoryOptions || [{title: 'Загрзука...', value: ''}
-    ])]), [select.categoryOptions])
+      ...(select.categoriesLoading 
+            ? [{title: 'Загрузка...', value: ''}] 
+            : select.categoriesList
+      )
+    ]), [select.categoriesList, select.categoriesLoading])
   };
 
   const flags = {
-    categoryDisabled: !select.categoryOptions
+    categoryDisabled: select.categoriesLoading
   }
 
   const {t} = useTranslate();

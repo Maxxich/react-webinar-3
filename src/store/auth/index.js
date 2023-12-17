@@ -121,6 +121,14 @@ class AuthState extends StoreModule {
     }
 
   }
+
+  clearError() {
+    if (this.getState().errorLogin === '') return
+    this.setState({
+      ...this.getState(),
+      errorLogin: ''
+    })
+  }
 }
 
 export default AuthState;

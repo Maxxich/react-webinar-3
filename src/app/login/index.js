@@ -1,4 +1,4 @@
-import {memo, useLayoutEffect} from 'react';
+import {memo, useEffect, useLayoutEffect} from 'react';
 import useTranslate from "../../hooks/use-translate";
 import Navigation from "../../containers/navigation";
 import PageLayout from "../../components/page-layout";
@@ -9,12 +9,13 @@ import LoginForm from '../../containers/login-form';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import useSelector from '../../hooks/use-selector';
 import Title from '../../components/title';
+import useStore from '../../hooks/use-store';
 
 /**
  * Страница входа
  */
 function Login() {
-
+  const store = useStore()
   const navigate = useNavigate()
   const location = useLocation()
   const [searchParams] = useSearchParams()
@@ -38,6 +39,9 @@ function Login() {
       navigate('/', {replace: true});
     }
   }, [isAuthenticated, location.key])
+
+
+  useEffect(() => () => store.actions.auth.clearError(), [store])
 
   const {t} = useTranslate();
 

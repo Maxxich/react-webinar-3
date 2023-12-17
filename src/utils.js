@@ -33,3 +33,39 @@ export function codeGenerator(start = 0) {
 export function numberFormat(value, locale = 'ru-RU', options = {}) {
   return new Intl.NumberFormat(locale, options).format(value);
 }
+
+
+/**
+ * Форматирование категорий под компонент select
+ * @param categoriesArray {[
+ *  _id: string,
+ *  title: string,
+ *  parent: null | {
+ *    _id: string
+ * } 
+ * ]}
+ * @returns {[
+ *  value: string,
+ *  title: string
+ * ]}
+ */
+export function getFormatedCategories(categoriesArray) {
+  const formatTitle = (title, depth = 0) => depth === 0
+    ? title
+    : Array(depth).fill('-').join(' ') +  ' ' + title
+
+  const format = (arr, depth = 0, parentId) => 
+    arr
+      .filter(c => (
+        // Фильтр по корневым родителям, если нет parentId
+        c.parent === null && !parentId
+        || 
+        // Фильтр по прямому потомку, если передан parentId
+        c.parent?._id === parentId && parentId
+      ))
+      .reduce((acc, c) => acc.concat(
+          [{value: c._id, title: formatTitle(c.title, depth)}],
+          format(arr, depth + 1, c._id)
+      ), [])
+  return format(categoriesArray)
+}
