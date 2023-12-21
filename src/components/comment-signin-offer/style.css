@@ -1,0 +1,24 @@
+.CommentSignInOffer {
+  margin-bottom: 30px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 0;
+}
+
+.CommentSignInOffer-link,
+.CommentSignInOffer-message,
+.CommentSignInOffer-button {
+  display: block;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+.CommentSignInOffer-button {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
+  color: #666666;
+  text-decoration: underline;
+}
