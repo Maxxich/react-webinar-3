@@ -1,4 +1,3 @@
-import formatDate from "../../utils/format-date";
 import listToTree from "../../utils/list-to-tree";
 import treeToList from "../../utils/tree-to-list";
 
@@ -24,7 +23,7 @@ const commentsActions = {
           return ({
             level,
             name: comment.author.profile.name,
-            dateCreate: formatDate(comment.dateCreate),
+            dateCreate: comment.dateCreate,
             text: comment.text,
             _id: comment._id
           })

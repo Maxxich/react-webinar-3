@@ -9,6 +9,8 @@ import Spinner from "../../components/spinner";
 import {useDispatch, useSelector as useReduxSelector} from 'react-redux'
 import shallowEqual from "shallowequal";
 import commentsActions from '../../store-redux/comments/actions';
+import useTranslate from '../../hooks/use-translate';
+import formatDate from "../../utils/format-date";
 
 function Comments() {
   const location = useLocation();
@@ -47,11 +49,13 @@ function Comments() {
 
     onSend: useCallback(() => dispatch(commentsActions.post()), [dispatch])
   };
+
+  const {t,lang} = useTranslate();
   
   const renders = {
     title: useMemo(() => (
-      `Комментарии (${reduxSelect.count || 0})`
-    ), [reduxSelect.count]),
+      `${t('comments.comments')} (${reduxSelect.count || 0})`
+    ), [reduxSelect.count, t]),
   }
 
   return (
@@ -60,30 +64,30 @@ function Comments() {
         {
           reduxSelect.comments.map((c) => (
             <div key={c._id}>
-              <CommentCard comment={c}
-                          labelReply={'Ответить'}
+              <CommentCard comment={{...c, dateCreate: formatDate(c.dateCreate, lang)}}
+                          labelReply={t('comments.reply')}
                           key={c._id}
                           onReply={callbacks.onClickReply}/>
               {reduxSelect.renderAfterCommentWithId === c._id && (select.authExists 
-                ? <AddCommentForm title={'Новый ответ'}
-                                  sendLabel={'Отправить'}
-                                  cancelLabel={'Отмена'}
+                ? <AddCommentForm title={t('comments.new-reply')}
+                                  sendLabel={t('comments.send')}
+                                  cancelLabel={t('comments.cancel')}
                                   level={reduxSelect.renderLevel}
                                   key={'form' + reduxSelect.targetParentId}
                                   onCancel={callbacks.onCancelReply}
                                   value={reduxSelect.text}
                                   onValueChange={callbacks.onTextChange}
                                   disabled={reduxSelect.waiting}
-                                  placeholder={'Текст'}
+                                  placeholder={t('comments.text')}
                                   onSend={callbacks.onSend}/>
                 : <CommentSigninOffer to={'/login'} 
                                       backPathname={location.pathname}
                                       level={reduxSelect.renderLevel}
                                       onCancel={callbacks.onCancelReply}
-                                      linkLabel="Войдите"
-                                      messageLabel=", чтобы иметь возможность ответить."
+                                      linkLabel={t('comments.login')}
+                                      messageLabel={t('comments.to-reply')}
                                       key={'offer' + reduxSelect.targetParentId}
-                                      cancelLabel="Отмена"/>
+                                      cancelLabel={t('comments.cancel')}/>
               )}
             </div>
           ))
@@ -91,17 +95,17 @@ function Comments() {
 
         {
           (reduxSelect.rootParentId === reduxSelect.targetParentId) && (select.authExists
-            ? <AddCommentForm title={'Новый комментарий'} 
-                              sendLabel={'Отправить'}
+            ? <AddCommentForm title={t('comments.new-comment')} 
+                              sendLabel={t('comments.send')}
                               value={reduxSelect.text}
                               onValueChange={callbacks.onTextChange}
                               disabled={reduxSelect.waiting}
-                              placeholder={'Текст'}
+                              placeholder={t('comments.text')}
                               onSend={callbacks.onSend}/>
             :  <CommentSigninOffer to={'/login'} 
                                    backPathname={location.pathname}
-                                   linkLabel="Войдите"
-                                   messageLabel=", чтобы иметь возможность комментровать"/>
+                                   linkLabel={t('comments.login')}
+                                   messageLabel={t('comments.to-comment')}/>
           )
         }
       </CommentsLayout>
