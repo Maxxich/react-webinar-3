@@ -16,6 +16,10 @@
     "other": "товара"
   },
   "article.add": "Добавить",
+  "article.country": "Страна производитель",
+  "article.category": "Категория",
+  "article.release": "Год выпуска",
+  "article.price": "Цена",
   "filter.reset": "Сбросить",
   "auth.title": "Вход",
   "auth.login": "Логин",
@@ -32,5 +36,15 @@
   "comments.login": "Войдите",
   "comments.to-reply": ", чтобы иметь возможность ответить.",
   "comments.new-comment": "Новый комментарий",
-  "comments.to-comment": ", чтобы иметь возможность комментровать"
+  "comments.to-comment": ", чтобы иметь возможность комментровать",
+  "profile.profile": "Профиль",
+  "profile.name": "Имя",
+  "profile.phone": "Телефон",
+  "protected.wait": "Ждём...",
+  "catalog-filter.in-order": "По порядку",
+  "catalog-filter.by-naming": "По именованию",
+  "catalog-filter.expensive": "Сначала дорогие",
+  "catalog-filter.ancient": "Древние",
+  "catalog-filter.all": "Все",
+  "catalog-filter.search": "Поиск"
 }

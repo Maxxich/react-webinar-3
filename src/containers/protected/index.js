@@ -2,6 +2,7 @@ import {memo, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import useSelector from '../../hooks/use-selector';
 import {useLocation, useNavigate} from 'react-router-dom';
+import useTranslate from '../../hooks/use-translate';
 
 function Protected({children, redirect}) {
 
@@ -12,6 +13,7 @@ function Protected({children, redirect}) {
 
   const navigate = useNavigate();
   const location = useLocation();
+  const {t} = useTranslate()
 
   useEffect(() => {
     if (!select.exists && !select.waiting) {
@@ -20,7 +22,7 @@ function Protected({children, redirect}) {
   }, [select.exists, select.waiting]);
 
   if (!select.exists || select.waiting) {
-    return <div>Ждём...</div>
+    return <div>{t('protected.wait')}</div>
   } else {
     return children;
   }

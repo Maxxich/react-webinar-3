@@ -14,6 +14,10 @@
     "other": "articles"
   },
   "article.add": "Add",
+  "article.country": "Manufacturer country",
+  "article.category": "Category",
+  "article.release": "Year of release",
+  "article.price": "Price",
   "filter.reset": "Reset",
   "auth.title": "Sign In",
   "auth.login": "Login",
@@ -30,6 +34,16 @@
   "comments.login": "Login",
   "comments.to-reply": ", to be able to reply.",
   "comments.new-comment": "New comment",
-  "comments.to-comment": ", to be able to comment"
+  "comments.to-comment": ", to be able to comment",
+  "profile.profile": "Profile",
+  "profile.name": "Name",
+  "profile.phone": "Phone",
+  "protected.wait": "Wait...",
+  "catalog-filter.in-order": "In order",
+  "catalog-filter.by-naming": "By naming",
+  "catalog-filter.expensive": "Expensive at first",
+  "catalog-filter.ancient": "Ancient",
+  "catalog-filter.all": "All",
+  "catalog-filter.search": "Search"
 
 }
