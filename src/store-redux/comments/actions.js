@@ -22,7 +22,10 @@ const commentsActions = {
           }
           return ({
             level,
-            name: comment.author.profile.name,
+            author: {
+              name: comment.author.profile.name,
+              _id: comment.author._id
+            },
             dateCreate: comment.dateCreate,
             text: comment.text,
             _id: comment._id

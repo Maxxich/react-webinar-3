@@ -15,6 +15,10 @@
   margin-right: 10px;
 }
 
+.CommentCard-name_gray {
+  color: #666666;
+}
+
 .CommentCard-date {
   font-size: 12px;
   line-height: 14px;

@@ -18,6 +18,7 @@ function Comments() {
 
   const select = useSelector(state => ({
     authExists: state.session.exists,
+    authId: state.session.user._id,
   }));
 
   const reduxSelect = useReduxSelector(state => ({
@@ -67,7 +68,8 @@ function Comments() {
               <CommentCard comment={{...c, dateCreate: formatDate(c.dateCreate, lang)}}
                           labelReply={t('comments.reply')}
                           key={c._id}
-                          onReply={callbacks.onClickReply}/>
+                          onReply={callbacks.onClickReply}
+                          belongsToAuth={c.author._id === select.authId}/>
               {reduxSelect.renderAfterCommentWithId === c._id && (select.authExists 
                 ? <AddCommentForm title={t('comments.new-reply')}
                                   sendLabel={t('comments.send')}
