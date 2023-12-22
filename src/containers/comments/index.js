@@ -65,11 +65,15 @@ function Comments() {
         {
           reduxSelect.comments.map((c) => (
             <div key={c._id}>
-              <CommentCard comment={{...c, dateCreate: formatDate(c.dateCreate, lang)}}
-                          labelReply={t('comments.reply')}
-                          key={c._id}
-                          onReply={callbacks.onClickReply}
-                          belongsToAuth={c.author._id === select.authId}/>
+              <CommentCard _id={c._id}
+                            authorName={c.author.name}
+                            dateCreate={formatDate(c.dateCreate, lang)}
+                            level={c.level}
+                            text={c.text}
+                            labelReply={t('comments.reply')}
+                            key={c._id}
+                            onReply={callbacks.onClickReply}
+                            belongsToAuth={c.author._id === select.authId}/>
               {reduxSelect.renderAfterCommentWithId === c._id && (select.authExists 
                 ? <AddCommentForm title={t('comments.new-reply')}
                                   sendLabel={t('comments.send')}
