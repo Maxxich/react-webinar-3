@@ -1,4 +1,4 @@
-import { memo, useCallback, useMemo } from "react";
+import { memo, useCallback, useEffect, useMemo, useRef } from "react";
 import AddCommentForm from "../../components/add-comment-form";
 import CommentCard from "../../components/comment-card";
 import CommentSigninOffer from "../../components/comment-signin-offer";
@@ -57,7 +57,20 @@ function Comments() {
     title: useMemo(() => (
       `${t('comments.comments')} (${reduxSelect.count || 0})`
     ), [reduxSelect.count, t]),
+    maxLevel: 7
   }
+  
+  const ref = useRef()
+
+  useEffect(() => {
+    if (!reduxSelect.targetParentId) return 
+    if (reduxSelect.targetParentId === reduxSelect.rootParentId) return 
+    ref.current.scrollIntoView({
+      block: 'center',
+      behavior: 'smooth',
+    })
+    ref.current.focus?.()
+  }, [reduxSelect.targetParentId, reduxSelect.rootParentId])
 
   return (
     <Spinner active={reduxSelect.waiting}>
@@ -69,6 +82,7 @@ function Comments() {
                             authorName={c.author.name}
                             dateCreate={formatDate(c.dateCreate, lang)}
                             level={c.level}
+                            maxLevel={renders.maxLevel}
                             text={c.text}
                             labelReply={t('comments.reply')}
                             key={c._id}
@@ -79,21 +93,25 @@ function Comments() {
                                   sendLabel={t('comments.send')}
                                   cancelLabel={t('comments.cancel')}
                                   level={reduxSelect.renderLevel}
+                                  maxLevel={renders.maxLevel+1}
                                   key={'form' + reduxSelect.targetParentId}
                                   onCancel={callbacks.onCancelReply}
                                   value={reduxSelect.text}
                                   onValueChange={callbacks.onTextChange}
                                   disabled={reduxSelect.waiting}
                                   placeholder={t('comments.text')}
-                                  onSend={callbacks.onSend}/>
+                                  onSend={callbacks.onSend}
+                                  ref={ref}/>
                 : <CommentSigninOffer to={'/login'} 
                                       backPathname={location.pathname}
                                       level={reduxSelect.renderLevel}
+                                      maxLevel={renders.maxLevel+1}
                                       onCancel={callbacks.onCancelReply}
                                       linkLabel={t('comments.login')}
                                       messageLabel={t('comments.to-reply')}
                                       key={'offer' + reduxSelect.targetParentId}
-                                      cancelLabel={t('comments.cancel')}/>
+                                      cancelLabel={t('comments.cancel')}
+                                      ref={ref}/>
               )}
             </div>
           ))

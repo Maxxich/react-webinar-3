@@ -76,7 +76,8 @@ function reducer(state = initialState, action) {
         targetParentType: state.rootParentType,
         renderAfterCommentWithId: undefined,
         renderLevel: undefined,
-        text: ''
+        text: '',
+        data: [...action.payload]
       }
       
     case "comments/post-error":

@@ -1,15 +1,17 @@
-import { memo } from "react";
+import { forwardRef, memo } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types'
 import {cn as bem} from '@bem-react/classname'
 import './style.css'
 
-function CommentSignInOffer(props) {
+function CommentSignInOffer(props, ref) {
   const cn = bem('CommentSignInOffer')
+
   return (
-    <div className={cn()} style={{marginLeft: props.level * 30}}>
+    <div className={cn()} style={{marginLeft: Math.min(props.level || 0, props.maxLevel || 0) * 30}}>
       <Link to={props.to} 
             state={{back: props.backPathname}}
+            ref={ref}
             className={cn('link')}>{props.linkLabel}</Link>
       <span className={cn('message')}>{props.messageLabel}</span>
       {props.onCancel && (
@@ -24,6 +26,7 @@ CommentSignInOffer.propTypes = {
   backPathname: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired,
   level: PropTypes.number,
+  maxLevel: PropTypes.number,
   onCancel: PropTypes.func,
   linkLabel: PropTypes.string.isRequired,
   messageLabel: PropTypes.string.isRequired,
@@ -31,7 +34,8 @@ CommentSignInOffer.propTypes = {
 }
 
 CommentSignInOffer.defaultProps = {
-  level: 0
+  level: 0,
+  maxLevel: 0
 }
 
-export default memo(CommentSignInOffer)
+export default memo(forwardRef(CommentSignInOffer))

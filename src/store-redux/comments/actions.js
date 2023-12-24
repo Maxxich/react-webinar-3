@@ -51,14 +51,14 @@ const commentsActions = {
   post: () => {
     return async (dispatch, getState, services) => {
       const {targetParentId, targetParentType, text} = getState().comments
-      if (!text || !targetParentId || !targetParentType) return
+      if (!text || !text.trim() || !targetParentId || !targetParentType) return
       dispatch({type: 'comments/post-start'});
       try {
         const res = await services.api.request({
-          url: `/api/v1/comments`,
+          url: `/api/v1/comments?fields=_id,text,dateCreate,author(profile(name)),parent(_id,_type)`,
           method: 'POST',
           body: JSON.stringify({
-            text,
+            text: text.trim(),
             parent: {
               _id: targetParentId,
               _type: targetParentType
@@ -66,8 +66,26 @@ const commentsActions = {
           })
         });
         if (res.status !== 200) throw new Error()
-        dispatch({type: 'comments/post-success'});
-        dispatch(commentsActions.load(getState().comments.rootParentId, true))
+        const comment = {
+          author: {
+            name: res.data.result.author.profile.name,
+            _id: res.data.result.author._id
+          },
+          dateCreate: res.data.result.dateCreate,
+          text: res.data.result.text,
+          _id: res.data.result._id
+        }
+        const parentId = res.data.result.parent._id
+        const {data, renderAfterCommentWithId} = getState().comments
+        comment.level = data.find(c => c._id === parentId).level + 1
+        const insertAfterIndex = data.findIndex(c => c._id === renderAfterCommentWithId)
+        const newData = [
+          ...data.slice(0, insertAfterIndex + 1),
+          comment,
+          ...data.slice(insertAfterIndex + 1)
+        ]
+
+        dispatch({type: 'comments/post-success', payload: newData});
       } catch (e) {
         dispatch({type: 'comments/post-error'});
       }
