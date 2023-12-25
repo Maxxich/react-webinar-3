@@ -69,7 +69,7 @@ function Comments() {
       block: 'center',
       behavior: 'smooth',
     })
-    ref.current.focus?.()
+    ref.current.focus?.({preventScroll: true})
   }, [reduxSelect.targetParentId, reduxSelect.rootParentId])
 
   return (
